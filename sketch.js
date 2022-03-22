@@ -1,4 +1,4 @@
-var PLAY = 1;
+ var PLAY = 1;
 var END = 0;
 var gameState = PLAY;
 
@@ -9,8 +9,8 @@ var cloudsGroup, cloudImage;
 var obstaclesGroup, obstacle1, obstacle2, obstacle3, obstacle4, obstacle5, obstacle6;
 
 var score;
-var gameOverImg,restartImg
-var jumpSound , checkPointSound, dieSound
+var gameOverImg,restartImg;
+var jumpSound , checkPointSound, dieSound;
 
 function preload(){
   trex_running = loadAnimation("trex1.png","trex3.png","trex4.png");
@@ -27,20 +27,20 @@ function preload(){
   obstacle5 = loadImage("obstacle5.png");
   obstacle6 = loadImage("obstacle6.png");
   
-  restartImg = loadImage("restart.png")
-  gameOverImg = loadImage("gameOver.png")
+  restartImg = loadImage("restart.png");
+  gameOverImg = loadImage("gameOver.png");
   
-  jumpSound = loadSound("jump.mp3")
-  dieSound = loadSound("die.mp3")
-  checkPointSound = loadSound("checkPoint.mp3")
+  jumpSound = loadSound("jump.mp3");
+  dieSound = loadSound("die.mp3");
+  checkPointSound = loadSound("checkPoint.mp3");
 }
 
 function setup() {
-  createCanvas(windowWidth,windowHeight)
+  createCanvas(windowWidth,windowHeight);
   
 
   var message = "Esta é uma mensagem";
- console.log(message)
+ console.log(message);
   
   trex = createSprite(50,160,20,50);
   trex.addAnimation("running", trex_running);
@@ -72,7 +72,7 @@ function setup() {
 
   
   trex.setCollider("rectangle",0,0,trex.width,trex.height);
-  trex.debug = true
+  trex.debug = true;
   
   score = 0;
   
@@ -90,12 +90,12 @@ function draw() {
     gameOver.visible = false;
     restart.visible = false;
     
-    ground.velocityX = -(4 + 3* score/100)
+    ground.velocityX = -(4 + 3* score/100);
     //pontuação
     score = score + Math.round(getFrameRate()/60);
     
     if(score>0 && score%100 === 0){
-       checkPointSound.play() 
+       checkPointSound.play() ;
     }
     
     if (ground.x < 0){
@@ -109,7 +109,7 @@ function draw() {
     }
     
     //adicionar gravidade
-    trex.velocityY = trex.velocityY + 0.8
+    trex.velocityY = trex.velocityY + 0.8;
   
     //gerar as nuvens
     spawnClouds();
@@ -121,7 +121,7 @@ function draw() {
         //trex.velocityY = -12;
         jumpSound.play();
         gameState = END;
-        dieSound.play()
+        dieSound.play();
       
     }
   }
@@ -135,7 +135,7 @@ function draw() {
      
      
       ground.velocityX = 0;
-      trex.velocityY = 0
+      trex.velocityY = 0;
       
      
       //definir tempo de vida dos objetos do jogo para que eles nunca sejam destruídos
@@ -170,7 +170,7 @@ function reset(){
   trex.changeAnimation("running",trex_running);
   //score=score+Match.round(frameRate/60);//
   if(score>0 && score%100 ===0){
-    checkPointSound.play() 
+    checkPointSound.play();
   }
   if(ground.x<0){ 
     ground.x= gound.width/2;
@@ -235,4 +235,3 @@ function spawnClouds() {
     cloudsGroup.add(cloud);
   }
 }
-
